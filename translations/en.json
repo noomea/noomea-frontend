@@ -1,0 +1,20 @@
+{
+  "coming_soon": "Coming soon",
+  "menu.viewers": "Viewers",
+  "menu.creators": "Creators",
+  "menu.store": "Store",
+  "menu.profile": "Profile",
+  "button.connect_wallet": "Connect wallet",
+  "built_on_solana": "Built on",
+  "header.infos.partnered_creators": "Partnered creators",
+  "header.infos.online": "Online",
+  "header.infos.airdropped": "Airdropped NOOM",
+  "header.infos.today": "Today",
+  "wallet.not_available": "Phantom Wallet not available",
+  "wallet.loading": "Loading...",
+  "wallet.connected": "Connected",
+  "wallet.profile": "Profile",
+  "wallet.disconnect": "Disconnect",
+  "wallet.copy_address": "Copy",
+  "faq.title": "Questions from our community"
+}

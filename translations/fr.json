@@ -1,0 +1,20 @@
+{
+  "coming_soon": "Bientôt disponible",
+  "menu.viewers": "Viewers",
+  "menu.creators": "Créateurs",
+  "menu.store": "Store",
+  "menu.profile": "Profile",
+  "button.connect_wallet": "Connecter un portefeuille",
+  "built_on_solana": "Créer sur",
+  "header.infos.partnered_creators": "Créateurs partenaire",
+  "header.infos.online": "En ligne",
+  "header.infos.airdropped": "NOOM envoyés",
+  "header.infos.today": "Aujourd'hui",
+  "wallet.not_available": "Veuillez installer le portefeuille Phantom",
+  "wallet.loading": "Chargement...",
+  "wallet.connected": "Connecté",
+  "wallet.profile": "Profil",
+  "wallet.disconnect": "Déconnecter",
+  "wallet.copy_address": "Copier",
+  "faq.title": "Questions de notre communauté"
+}

@@ -1,0 +1,20 @@
+{
+  "coming_soon": "곧 출시",
+  "menu.viewers": "뷰어",
+  "menu.creators": "스트리머",
+  "menu.store": "시장",
+  "menu.profile": "프로필",
+  "button.connect_wallet": "지깁 연결",
+  "built_on_solana": "블록 체인",
+  "header.infos.partnered_creators": "파트너 스트리머",
+  "header.infos.online": "온라인",
+  "header.infos.airdropped": "에어드롭 NOOM",
+  "header.infos.today": "오늘은",
+  "wallet.not_available": "팬텀 지갑을 사용할 수 없음",
+  "wallet.loading": "싣고 있는...",
+  "wallet.connected": "연결된",
+  "wallet.profile": "프로필",
+  "wallet.disconnect": "연결끊기",
+  "wallet.copy_address": "주소 복사",
+  "faq.title": "우리 커뮤니티의 질문들"
+}
