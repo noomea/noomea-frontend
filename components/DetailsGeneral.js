@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import ButtonGradient from "./ButtonGradient";
 import TextGradient from "./TextGradient";
@@ -15,11 +15,11 @@ function DetailsGeneral(props) {
         <div>
           <div className="max-w-md">
             <h2 className="text-4xl font-bold leading-normal">
-              <TextGradient>NOOM</TextGradient> the ultimate community token
+              <TextGradient>NOOM</TextGradient>{" "}
+              <FormattedMessage id="details.title" />
             </h2>
             <p className="text-white/40 mb-14 mt-4">
-              NOOM token is an entire ecosystem and bring a new economy to our
-              world
+              <FormattedMessage id="details.description" />
             </p>
           </div>
           <div className="flex space-x-10 items-center">
@@ -27,7 +27,9 @@ function DetailsGeneral(props) {
               href="https://raydium.io/swap/?ammId=4eJCwHbLomqYJy8S93y5Lawr9PPTzk65wZYs34bDGjaX"
               target="_blank"
             >
-              <ButtonGradient>Buy NOOM on Raydium</ButtonGradient>
+              <ButtonGradient>
+                <FormattedMessage id="details.button.buy" />
+              </ButtonGradient>
             </a>
 
             <div className="font-bold text-sm cursor-pointer group hover:opacity-70 p-2">
@@ -36,7 +38,9 @@ function DetailsGeneral(props) {
                   href="https://solscan.io/token/8AxFH7RYhBHMVHdhKXKEQJpedv5S41BofwVb2oJ1LNxf#metadata"
                   target="_blank"
                 >
-                  <TextGradient>More about NOOM on Solscan.io</TextGradient>
+                  <TextGradient>
+                    <FormattedMessage id="details.button.details" />
+                  </TextGradient>
                 </a>
               </div>
             </div>

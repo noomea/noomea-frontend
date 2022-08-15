@@ -36,7 +36,7 @@ function PageLoader(props) {
       <motion.div
         animate={pageAnimation}
         transition={{ duration: 0.5 }}
-        className="fixed w-full h-full flex items-center bg-white top-0 left-0 justify-center pointer-events-none"
+        className="fixed w-full h-full flex items-center bg-white top-0 left-0 justify-center pointer-events-none z-40"
       >
         <motion.div animate={imageAnimation} transition={{ duration: 0.5 }}>
           <Image src="/noomea-logo-black.svg" height={200} width={200} />

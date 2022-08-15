@@ -14,8 +14,7 @@ function HeaderHero(props) {
         <div className="container mx-auto pb-20 lg:pb-40 pt-10 lg:pt-28">
           <div className="max-w-2xl">
             <h2 className="text-4xl font-bold leading-normal text-center lg:text-left">
-              NOOMEA is a Web3 platform with Social-Fi elements to empower the
-              viewer experience and bridge creators with audience
+              <FormattedMessage id="viewer.header.title" />
             </h2>
             <div className="text-center mt-8 lg:hidden">
               <a

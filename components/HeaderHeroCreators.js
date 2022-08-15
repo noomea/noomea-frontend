@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FormattedMessage } from "react-intl";
 
 function HeaderHeroCreators(props) {
   return (
@@ -12,16 +13,15 @@ function HeaderHeroCreators(props) {
       <div className="container mx-auto pb-20 lg:pb-30 pt-10">
         <div style={{ maxWidth: 1024 }} className="mx-auto">
           <h2 className="text-4xl font-bold leading-normal text-center mb-12 px-12">
-            A new generation for content creators
+            <FormattedMessage id="creator.header.title" />
           </h2>
           <div className="flex justify-between items-center flex-col-reverse lg:flex-row lg:space-x-8">
             <div className="max-w-md text-center lg:text-left">
               <h3 className="text-2xl lg:text-3xl font-bold leading-normal">
-                Empower creators on web3
+                <FormattedMessage id="creator.header.subtitle" />
               </h3>
               <p className="text-white/50 mt-4">
-                Join our platform today and develop a new economy with your
-                audience
+                <FormattedMessage id="creator.header.description" />
               </p>
             </div>
             <div>
@@ -35,7 +35,9 @@ function HeaderHeroCreators(props) {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-xs text-white/40 mb-4">Integrates with</p>
+          <p className="text-xs text-white/40 mb-4">
+            <FormattedMessage id="creator.header.integrates_with" />
+          </p>
           <Image src="/img/logos/twitch.svg" width="98" height="32" />
         </div>
       </div>

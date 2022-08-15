@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import Link from "next/link";
 import { CheckIcon, ExclamationIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
 
@@ -29,7 +28,7 @@ function HeaderInfos(props) {
     },
     {
       title: "header.infos.online",
-      value: onlinePartneredCreators?.length || 0, //
+      value: onlinePartneredCreators?.length || 0,
     },
     {
       title: "header.infos.airdropped",
@@ -109,7 +108,7 @@ const ItemContainer = (props) => {
                     <ExclamationIcon className="w-4 h-4" />
                   </div>
                   <div className="flex-1 ml-2">
-                    These are creators for demo purpose only (not partnered).
+                    <FormattedMessage id="creator.partnered.warning_1" />
                   </div>
                 </div>
                 <div className="bg-green-700/20 rounded text-green-500  text-xs p-2 mb-3 inline-flex">
@@ -117,7 +116,7 @@ const ItemContainer = (props) => {
                     <CheckIcon className="w-4 h-4" />
                   </div>
                   <div className="flex-1 ml-2">
-                    "Watch and earn" feature is enabled on their streams.
+                    <FormattedMessage id="creator.partnered.warning_2" />
                   </div>
                 </div>
               </div>

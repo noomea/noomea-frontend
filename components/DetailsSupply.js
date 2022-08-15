@@ -6,6 +6,7 @@ import CountUp from "react-countup";
 import TextGradient from "./TextGradient";
 import { getTokenSupply } from "../api/solanaRPC";
 import { SOLANA_RPC_API } from "../variables";
+import { useIntl } from "react-intl";
 
 function DetailsSupply(props) {
   const [loaded, setLoaded] = useState(false);
@@ -13,16 +14,23 @@ function DetailsSupply(props) {
 
   const ref = useRef();
   const { inViewport } = useInViewport(ref, props);
+  const intl = useIntl();
 
   const DATA = [
     {
-      title: "Circulating Supply",
+      title: intl.formatMessage({ id: "supply.circulating" }),
       value: tokenSupply ? tokenSupply - 5000000 : 0,
     },
-    { title: "Total Supply", value: tokenSupply },
-    { title: "Max Supply", value: "--" },
-    { title: "Marketcap", value: "Not valued yet" },
-    { title: "Minted last 24h", value: "--" },
+    { title: intl.formatMessage({ id: "supply.total" }), value: tokenSupply },
+    { title: intl.formatMessage({ id: "supply.max" }), value: "--" },
+    {
+      title: intl.formatMessage({ id: "supply.marketcap" }),
+      value: intl.formatMessage({ id: "supply.marketcap.value" }),
+    },
+    {
+      title: intl.formatMessage({ id: "supply.minted_last_24h" }),
+      value: "--",
+    },
   ];
 
   const handleGetRPCDetails = async () => {

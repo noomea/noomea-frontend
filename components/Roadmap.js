@@ -1,91 +1,94 @@
 import React from "react";
 import { CheckCircleIcon, ExclamationIcon } from "@heroicons/react/outline";
 import { motion } from "framer-motion";
-
-const roadmap = [
-  {
-    title: "Q3 - 2022",
-    items: [
-      {
-        status: "done",
-        text: "Alpha stage : working product for Solana Hackathon",
-      },
-      {
-        status: "done",
-        text: "Allow users to claim tokens",
-      },
-      {
-        status: "done",
-        text: "Switch to Mainnet Solana RPC",
-      },
-      {
-        status: "done",
-        text: "Market on SERUM (NOOM/USDC)",
-      },
-      {
-        status: "pending",
-        text: "First partnered creator",
-      },
-      {
-        status: "pending",
-        text: "Gitbook documentation",
-      },
-    ],
-  },
-  {
-    title: "Q4 - 2022",
-    items: [
-      {
-        status: "pending",
-        text: "Allow users to use tokens",
-      },
-      {
-        status: "pending",
-        text: "Store feature release",
-      },
-      {
-        status: "pending",
-        text: "Onboard investors",
-      },
-      {
-        status: "pending",
-        text: "Onboard new creators",
-      },
-      {
-        status: "pending",
-        text: "Allow creators to join the plaftorm by stacking NOOM tokens",
-      },
-    ],
-  },
-  {
-    title: "Q1 - 2023",
-    items: [
-      {
-        status: "pending",
-        text: "Research and improve after viewers and creators feedbacks",
-      },
-      {
-        status: "pending",
-        text: "Add NFTs in Store opening packs",
-      },
-      {
-        status: "pending",
-        text: "Add NFT utility (boost earning, increase daily limit,..)",
-      },
-    ],
-  },
-  {
-    title: "Q2 - 2023",
-    items: [
-      {
-        status: "pending",
-        text: "Listing on major exchanges",
-      },
-    ],
-  },
-];
+import { useIntl } from "react-intl";
 
 function Roadmap(props) {
+  const intl = useIntl();
+
+  const roadmap = [
+    {
+      title: "Q3 - 2022",
+      items: [
+        {
+          status: "done",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.1" }),
+        },
+        {
+          status: "done",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.2" }),
+        },
+        {
+          status: "done",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.3" }),
+        },
+        {
+          status: "done",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.4" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.5" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q3_2022.6" }),
+        },
+      ],
+    },
+    {
+      title: "Q4 - 2022",
+      items: [
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q4_2022.1" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q4_2022.2" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q4_2022.3" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q4_2022.4" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q4_2022.5" }),
+        },
+      ],
+    },
+    {
+      title: "Q1 - 2023",
+      items: [
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q1_2023.1" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q1_2023.2" }),
+        },
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q1_2023.3" }),
+        },
+      ],
+    },
+    {
+      title: "Q2 - 2023",
+      items: [
+        {
+          status: "pending",
+          text: intl.formatMessage({ id: "roadmap.q2_2023.1" }),
+        },
+      ],
+    },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, top: 20 }}

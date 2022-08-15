@@ -331,7 +331,11 @@ const RedeemTokens = (props) => {
           disabled={amount === 0 || claimedRecently}
         >
           <div className="group-active:scale-90 relative transition-all">
-            <span>{loadingRedeem ? "loading" : "Claim now"}</span>
+            <span>
+              <FormattedMessage
+                id={loadingRedeem ? "wallet.loading" : "profile.claim_now"}
+              />
+            </span>
           </div>
         </button>
       </div>

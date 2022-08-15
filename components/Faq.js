@@ -2,58 +2,54 @@ import React from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
-import { FormattedMessage } from "react-intl";
-
-const DATA = {
-  viewers: [
-    {
-      title: "How can I earn NOOM tokens ?",
-      description:
-        "Link your wallet and your twitch account on the plaftorm and watch one of our partnered creator. It's that simple and it works on desktop and mobile. The more you watch a partnered creator the more NOOM tokens you earn.",
-    },
-    {
-      title: "How often drops are generated ?",
-      description:
-        "You can expect an average of 3 drops per hour on our partnered creators. This can vary slightly as drops are generated randomly.",
-    },
-    {
-      title: "What can I do with my NOOM tokens ?",
-      description:
-        "With your NOOM tokens you can buy a sub from our partnered creators or send it directly to their wallet as a donation. A Twitch add-on in currently in building for creator alerts.",
-    },
-    {
-      title: "Is it free ?",
-      description:
-        "Yes. Using our platform and earning NOOM tokens is totally free of cost. A small network fee is required for claiming tokens (0.001 SOL)",
-    },
-  ],
-  creators: [
-    {
-      title: "Who are eligible ?",
-      description:
-        "You need to be an active creator on Twitch since 6+ months and have an average viewer base no bigger than 500.",
-    },
-    {
-      title: "How to become a partnered creator ?",
-      description:
-        "To become partnered creator you need to stake the minimum required NOOM tokens. As NOOM tokens are not available on the market you can fill out the partnered creator form above and we'll get back to you. Once you stake NOOM  tokens, Noomea's features will be automatically added to your channel and viewers can earn NOOM tokens right away.",
-    },
-    {
-      title: "I'm not familiar with web3 technologies where can I learn ?",
-      description: "Join our Discord, we'll be happy to help!",
-    },
-  ],
-};
+import { FormattedMessage, useIntl } from "react-intl";
 
 function Faq(props) {
   const { type } = props;
+  if (!type) return null;
 
-  if (!type) return;
+  const intl = useIntl();
+  const DATA = {
+    viewers: [
+      {
+        title: intl.formatMessage({ id: "faq.viewer.1.title" }),
+        description: intl.formatMessage({ id: "faq.viewer.1.description" }),
+      },
+      {
+        title: intl.formatMessage({ id: "faq.viewer.2.title" }),
+        description: intl.formatMessage({ id: "faq.viewer.2.description" }),
+      },
+      {
+        title: intl.formatMessage({ id: "faq.viewer.3.title" }),
+        description: intl.formatMessage({ id: "faq.viewer.3.description" }),
+      },
+      {
+        title: intl.formatMessage({ id: "faq.viewer.4.title" }),
+        description: intl.formatMessage({ id: "faq.viewer.4.description" }),
+      },
+    ],
+    creators: [
+      {
+        title: intl.formatMessage({ id: "faq.creator.1.title" }),
+        description: intl.formatMessage({ id: "faq.creator.1.description" }),
+      },
+      {
+        title: intl.formatMessage({ id: "faq.creator.2.title" }),
+        description: intl.formatMessage({ id: "faq.creator.2.description" }),
+      },
+      {
+        title: intl.formatMessage({ id: "faq.creator.3.title" }),
+        description: intl.formatMessage({ id: "faq.creator.3.description" }),
+      },
+    ],
+  };
 
   return (
     <div className="container mx-auto py-32 ">
       <div className="leading-normal text-center mb-12 flex flex-col-reverse lg:flex-row items-center justify-center">
-        <h3 className="text-4xl font-bold">Questions from our community</h3>
+        <h3 className="text-4xl font-bold">
+          <FormattedMessage id="faq.title" />
+        </h3>
         <span
           className={clsx(
             "text-xs rounded  text-white font-medium px-2 py-1 ml-4 mb-6 lg:mb-0",

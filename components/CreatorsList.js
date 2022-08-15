@@ -7,6 +7,7 @@ import {
   ExclamationIcon,
 } from "@heroicons/react/outline";
 import clsx from "clsx";
+import { FormattedMessage } from "react-intl";
 
 function CreatorsList(props) {
   const { partneredCreators, onlinePartneredCreators } = props;
@@ -51,24 +52,24 @@ function CreatorsList(props) {
       <div className="container mx-auto pb-20 py-32">
         <div style={{ maxWidth: 1024 }} className="mx-auto">
           <h2 className="text-4xl font-bold leading-normal text-center mb-16 px-12">
-            Partnered Creators
+            <FormattedMessage id="creator.partnered.title" />
           </h2>
           <div className="flex justify-between items-center flex-col-reverse lg:flex-row lg:space-x-8">
             <div className="max-w-lg text-center lg:text-left">
               <h3 className="text-2xl lg:text-3xl font-bold leading-normal mt-12 lg:mt-0">
-                Watch our creators today
+                <FormattedMessage id="creator.partnered.subtitle" />
               </h3>
               <div className="text-white/50 mt-4">
                 <div className="text-yellow-400 mb-2 inline-flex items-center">
                   <ExclamationIcon className="h-5 w-5 mr-2" />
                   <span className="flex-1">
-                    These are creators for demo purpose only (not partnered).
+                    <FormattedMessage id="creator.partnered.warning_1" />
                   </span>
                 </div>
                 <div className="inline-flex items-center">
                   <CheckIcon className="h-5 w-5 mr-2" />
                   <span className="flex-1">
-                    "Watch and earn" feature is enabled on their streams.
+                    <FormattedMessage id="creator.partnered.warning_2" />
                   </span>
                 </div>
               </div>

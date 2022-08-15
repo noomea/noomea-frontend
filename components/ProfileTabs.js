@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
-import { format, isSameDay } from "date-fns";
+import { isSameDay } from "date-fns";
 import { Line, Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import clsx from "clsx";

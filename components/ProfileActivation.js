@@ -5,6 +5,7 @@ import { doc, getDoc, serverTimestamp, updateDoc } from "firebase/firestore";
 
 import { db } from "../firebase-config";
 import ButtonGradient from "./ButtonGradient";
+import { FormattedMessage } from "react-intl";
 
 function ProfileActivation(props) {
   const { user } = props;
@@ -88,7 +89,7 @@ const ActivationForm = (props) => {
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold leading-normal mb-14">
-        You need an activation code
+        <FormattedMessage id="activation.title" />
       </h1>
       <div>
         <form
@@ -113,13 +114,13 @@ const ActivationForm = (props) => {
           </div>
           <div>
             <ButtonGradient disabled={!input.length} loading={loading}>
-              Confirm
+              <FormattedMessage id="button.confirm" />
             </ButtonGradient>
           </div>
         </form>
         {error && (
           <div className="text-sm text-red-500 mt-4">
-            Hmm, that activation code doesn’t exist. Please try again.
+            <FormattedMessage id="activation.error" />
           </div>
         )}
       </div>
@@ -129,7 +130,7 @@ const ActivationForm = (props) => {
           target="_blank"
           className="text-sm font-medium p-4 text-white/60 hover:text-white transition"
         >
-          Get an activation code
+          <FormattedMessage id="activation.get_code" />
         </a>
       </div>
     </div>
