@@ -79,6 +79,8 @@ export const getTokenBalanceInWallet = async (publicKey) => {
 };
 
 export const getAmountFromTransaction = (signature) => {
+  if (!signature?.meta.length) return;
+
   const amount =
     Math.round(
       (signature.meta.postTokenBalances[0].uiTokenAmount.uiAmount -

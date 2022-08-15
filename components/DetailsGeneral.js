@@ -10,7 +10,7 @@ function DetailsGeneral(props) {
   const intl = useIntl();
 
   return (
-    <div className="container mx-auto py-20">
+    <div className="container mx-auto py-20 border-white/10 border-t-4">
       <div className="flex justify-between">
         <div>
           <div className="max-w-md">

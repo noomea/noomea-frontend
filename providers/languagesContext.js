@@ -8,7 +8,7 @@ import messages_ko from "../translations/ko.json";
 const messages = {
   en: messages_en,
   fr: messages_fr,
-  ko: messages_ko,
+  // ko: messages_ko,
 };
 
 export const LanguagesContext = createContext();
@@ -20,19 +20,13 @@ export const LanguagesProvider = ({ children }) => {
     setLocale(locale);
   };
 
-  //   useEffect(() => {
-  //     // setLocale(navigator.language.split(/[-_]/)[0]);
-  //   }, []);
-
   const values = { locale, changeLocaleTo };
 
   return (
     <LanguagesContext.Provider value={values}>
       <IntlProvider
-        // messages={messages[locale]}
-        // locale={locale}
-        messages={messages["en"]}
-        locale={"en"}
+        messages={messages[locale]}
+        locale={locale}
         defaultLocale="en"
       >
         {children}

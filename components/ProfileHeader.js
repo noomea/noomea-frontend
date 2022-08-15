@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { doc, onSnapshot } from "firebase/firestore";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import { toast } from "react-hot-toast";
@@ -23,6 +22,7 @@ import { displayFullAddress } from "../utils";
 import { db } from "../firebase-config";
 import { Spinner } from "./Spinner";
 import { twitchGetOauthToken, twitchGetUserDetails } from "../api/twitch";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function ProfileHeader(props) {
   const [userDB, setUserDB] = useState({});
@@ -30,6 +30,7 @@ function ProfileHeader(props) {
 
   const { publicKey } = useWallet();
   const router = useRouter();
+  const intl = useIntl();
 
   const redeemableTokens =
     Math.round(
@@ -57,9 +58,11 @@ function ProfileHeader(props) {
               className="absolute top-2 right-2 h-6 w-6 p-1 hover:bg-black/10 rounded-full"
               onClick={() => toast.dismiss(t.id)}
             />
-            <h4 className="font-medium text-lg">Twitch already linked</h4>
+            <h4 className="font-medium text-lg">
+              <FormattedMessage id="notifications.already_exists.title" />
+            </h4>
             <p className="text-sm text-black/70">
-              This twitch account is already linked to an account.
+              <FormattedMessage id="notifications.already_exists.description" />
             </p>
           </div>
         ),
@@ -76,9 +79,11 @@ function ProfileHeader(props) {
               className="absolute top-2 right-2 h-6 w-6 p-1 hover:bg-black/10 rounded-full"
               onClick={() => toast.dismiss(t.id)}
             />
-            <h4 className="font-medium text-lg">Your account is set!</h4>
+            <h4 className="font-medium text-lg">
+              <FormattedMessage id="notifications.account_set.title" />
+            </h4>
             <p className="text-sm text-black/70">
-              You can now earn NOOM tokens by watching our partnered creators
+              <FormattedMessage id="notifications.account_set.title" />
             </p>
           </div>
         ),
@@ -114,7 +119,7 @@ function ProfileHeader(props) {
   if (loading) {
     return (
       <div className="flex justify-center">
-        <Spinner text="Loading..." />
+        <Spinner text={intl.formatMessage({ id: "wallet.loading" })} />
       </div>
     );
   }
@@ -135,7 +140,9 @@ function ProfileHeader(props) {
           <div className="inline-flex space-x-2 items-center  mb-10">
             <div className="inline-flex items-center space-x-2 text-[#ff00b1] bg-black/20 px-6 py-3 rounded-full text-xs font-bold">
               <CheckIcon width={20} />
-              <TextGradient>Twitch account associated</TextGradient>
+              <TextGradient>
+                <FormattedMessage id="profile.twitch_associated" />
+              </TextGradient>
             </div>
             <RedeemTokens
               amount={redeemableTokens}
@@ -148,7 +155,7 @@ function ProfileHeader(props) {
               src={userDB.twitch.profile_image_url}
               className="rounded-full p-1 w-14 h-14 mr-4 border-4 border-white/20"
             />
-            <span className="text-2xl"> {userDB.twitch.display_name}</span>
+            <span className="text-2xl">{userDB.twitch.display_name}</span>
           </div>
 
           <button
@@ -165,14 +172,18 @@ function ProfileHeader(props) {
         <>
           <div className="inline-flex items-center space-x-2 text-[#ff00b1] bg-black/20 px-6 py-3 rounded-full text-xs font-bold mb-10">
             <CheckIcon width={20} />
-            <TextGradient>Account activated</TextGradient>
+            <TextGradient>
+              <formatMessage id="profile.account_activated" />
+            </TextGradient>
           </div>
           <br />
           <a
             href={`https://id.twitch.tv/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_TWITCH_API_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_TWITCH_URL_REDIRECT}&response_type=code&scope=user:read:email`}
             onClick={() => setLoading(true)}
           >
-            <ButtonGradient>Connect your Twitch account </ButtonGradient>
+            <ButtonGradient>
+              <FormattedMessage id="profile.connect_twitch" />
+            </ButtonGradient>
           </a>
         </>
       )}
@@ -199,9 +210,11 @@ const RedeemTokens = (props) => {
 
     const toastId = toast.loading((t) => (
       <div>
-        <h4 className="font-medium text-lg">Approving transaction</h4>
+        <h4 className="font-medium text-lg">
+          <FormattedMessage id="notifications.transaction.approving.title" />
+        </h4>
         <p className="text-sm text-black/70">
-          Please approve the pending transaction
+          <FormattedMessage id="notifications.transaction.approving.title" />
         </p>
       </div>
     ));
@@ -210,16 +223,14 @@ const RedeemTokens = (props) => {
       const transaction = await getTransaction(walletAddress);
       const signature = await sendTransaction(transaction, connection);
 
-      console.log(transaction);
-      console.log(signature);
-      console.log(walletAddress);
-
       toast.loading(
         (t) => (
           <div>
-            <h4 className="font-medium text-lg">Claiming tokens</h4>
+            <h4 className="font-medium text-lg">
+              <FormattedMessage id="notifications.transaction.claiming.title" />
+            </h4>
             <p className="text-sm text-black/70">
-              Wait a moment we're claiming your tokens
+              <FormattedMessage id="notifications.transaction.claiming.description" />
             </p>
           </div>
         ),
@@ -234,9 +245,11 @@ const RedeemTokens = (props) => {
         toast.success(
           (t) => (
             <div>
-              <h4 className="font-medium text-lg">Transaction confirmed</h4>
+              <h4 className="font-medium text-lg">
+                <FormattedMessage id="notifications.transaction.confirmed.title" />
+              </h4>
               <p className="text-sm text-black/70">
-                Tokens claimed successfully
+                <FormattedMessage id="notifications.transaction.confirmed.description" />
               </p>
             </div>
           ),
@@ -252,9 +265,11 @@ const RedeemTokens = (props) => {
                 className="absolute top-2 right-2 h-6 w-6 p-1 hover:bg-black/10 rounded-full"
                 onClick={() => toast.dismiss(t.id)}
               />
-              <h4 className="font-medium text-lg">Unable to send</h4>
+              <h4 className="font-medium text-lg">
+                <FormattedMessage id="notifications.transaction.error.title" />
+              </h4>
               <p className="text-sm text-black/70">
-                Failed sending transaction. Please try again later.
+                <FormattedMessage id="notifications.transaction.error.description" />
               </p>
             </div>
           ),
@@ -271,9 +286,11 @@ const RedeemTokens = (props) => {
               className="absolute top-2 right-2 h-6 w-6 p-1 hover:bg-black/10 rounded-full"
               onClick={() => toast.dismiss(t.id)}
             />
-            <h4 className="font-medium text-lg">Unable to send</h4>
+            <h4 className="font-medium text-lg">
+              <FormattedMessage id="notifications.transaction.error.title" />
+            </h4>
             <p className="text-sm text-black/70">
-              Failed sending transaction. Please try again later.
+              <FormattedMessage id="notifications.transaction.error.description" />
             </p>
           </div>
         ),

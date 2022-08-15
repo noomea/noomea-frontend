@@ -3,6 +3,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { doc, onSnapshot } from "firebase/firestore";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import ProfileActivation from "../components/ProfileActivation";
 import ProfileHeader from "../components/ProfileHeader";
@@ -14,6 +15,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
   const [userDB, setUserDB] = useState({});
   const { connected } = useWallet();
+  const intl = useIntl();
 
   const getUserDB = async (walletAddress) => {
     setLoading(true);
@@ -32,7 +34,7 @@ export default function Profile() {
   if (loading) {
     return (
       <div className="flex justify-center bg-black/20 py-20 mb-8">
-        <Spinner text="Loading..." />
+        <Spinner text={intl.formatMessage({ id: "wallet.loading" })} />
       </div>
     );
   }
@@ -40,7 +42,7 @@ export default function Profile() {
   return (
     <>
       <Head>
-        <title>Profile | Noomea</title>
+        <title>{intl.formatMessage({ id: "menu.viewers" })} | Noomea</title>
       </Head>
       <div className="py-20 bg-black/20">
         <div className="container mx-auto">
@@ -52,7 +54,7 @@ export default function Profile() {
             )
           ) : (
             <div className="text-center">
-              Connect with your wallet to see your profile.
+              <FormattedMessage id="profile.no_wallet" />
             </div>
           )}
         </div>
@@ -90,11 +92,12 @@ const News = (props) => {
   return (
     <div className="bg-black/20 mt-6 rounded px-4 py-3 text-sm flex">
       <div className="flex-1">
-        <strong>Drop event:</strong>
+        <strong>
+          <FormattedMessage id="news.dropEvent.title" />
+        </strong>
         {` `}
         <span className="text-white/80">
-          From Aug 12th to Aug 19th 2x more chance to get a drop on our
-          partnered creators
+          <FormattedMessage id="news.dropEvent.description" />
         </span>
       </div>
       <div

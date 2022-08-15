@@ -9,11 +9,13 @@ import { LIMIT_NOOM_PER_DAY, LIMIT_TRANSACTIONS_PROFILE } from "../variables";
 import Transactions from "./Transactions";
 import TextGradient from "./TextGradient";
 import ApplyForCreator from "./ApplyForCreator";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function ProfileTabs(props) {
   const { user } = props;
   const [dropsToday, setDropsToday] = useState(0);
   const [transactions, setTransactions] = useState([]);
+  const intl = useIntl();
 
   const getDropsToday = () => {
     const today = new Date();
@@ -46,23 +48,36 @@ function ProfileTabs(props) {
     <Tab.Group>
       <div className="flex justify-center mt-24">
         <Tab.List className="inline-flex p-2 bg-black/20 rounded-full">
-          <TabButton name="Viewer" />
-          <TabButton name="Creator" />
+          <TabButton name={intl.formatMessage({ id: "profile.tabs.viewer" })} />
+          <TabButton
+            name={intl.formatMessage({ id: "profile.tabs.creator" })}
+          />
         </Tab.List>
       </div>
       <Tab.Panels className="py-16">
         <Tab.Panel>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12">
             <div className="lg:col-span-2">
-              <h6 className="font-bold uppercase text-xs mb-4">Transactions</h6>
+              <h6 className="font-bold uppercase text-xs mb-4">
+                <FormattedMessage id="transactions.title" />
+              </h6>
               <Transactions signatures={transactions} />
             </div>
             <div className="">
-              <h6 className="font-bold uppercase text-xs mb-4">Earnings</h6>
+              <h6 className="font-bold uppercase text-xs mb-4">
+                <FormattedMessage id="earnings.title" />
+              </h6>
               <div className="bg-black/20 rounded-lg text-sm text-white/30 p-8">
                 <div className="text-center">
-                  <h5 className="text-white font-bold uppercase">Today</h5>
-                  <p>Max. earning per day: {LIMIT_NOOM_PER_DAY} NOOM</p>
+                  <h5 className="text-white font-bold uppercase">
+                    <FormattedMessage id="earnings.today" />
+                  </h5>
+                  <p>
+                    <FormattedMessage
+                      id="earnings.max_description"
+                      values={{ limit: LIMIT_NOOM_PER_DAY }}
+                    />
+                  </p>
                 </div>
                 <div className="relative my-6">
                   <Doughnut

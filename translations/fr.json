@@ -16,5 +16,9 @@
   "wallet.profile": "Profil",
   "wallet.disconnect": "Déconnecter",
   "wallet.copy_address": "Copier",
-  "faq.title": "Questions de notre communauté"
+  "faq.title": "Questions de notre communauté",
+  "profile.no_wallet": "Connect with your wallet to see your profile.",
+  "error.404.description": "Page non trouvée",
+  "error.500.title": "Erreur",
+  "error.500.description": "Essayez de rafraîchir la page"
 }

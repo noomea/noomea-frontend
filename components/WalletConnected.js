@@ -45,8 +45,10 @@ function WalletConnected(props) {
     setBalance({
       solana: convertBalance(solBalance),
       noomea:
-        noomBalance?.data?.result?.value[0]?.account?.data?.parsed?.info
-          ?.tokenAmount?.uiAmount,
+        Math.round(
+          noomBalance?.data?.result?.value[0]?.account?.data?.parsed?.info
+            ?.tokenAmount?.uiAmount * 100000
+        ) / 100000,
     });
   };
 

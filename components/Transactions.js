@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { CheckIcon, ExternalLinkIcon } from "@heroicons/react/solid";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { formatDistance } from "date-fns";
+import { en, fr } from "date-fns/locale";
 
 import { getAmountFromTransaction, getTransaction } from "../api/solanaRPC";
 import { displayAddress } from "../utils";
 import { LIMIT_TRANSACTIONS_PROFILE } from "../variables";
 import { Spinner } from "./Spinner";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function Transactions(props) {
   const { signatures } = props;
   const { publicKey } = useWallet();
+  const intl = useIntl();
 
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -34,7 +37,11 @@ function Transactions(props) {
   if (loading || !signatures?.length) {
     return (
       <div className="bg-black/20 h-32 rounded-lg flex justify-center items-center text-sm text-white/30">
-        {loading ? <Spinner text="Loading..." /> : "No informations"}
+        {loading ? (
+          <Spinner text={intl.formatMessage({ id: "wallet.loading" })} />
+        ) : (
+          intl.formatMessage({ id: "transactions.no_result" })
+        )}
       </div>
     );
   }
@@ -45,22 +52,22 @@ function Transactions(props) {
         <thead className="text-xs uppercase bg-black/40">
           <tr>
             <th scope="col" className="py-3 px-6">
-              Address
+              <FormattedMessage id="transactions.address" />
             </th>
             <th scope="col" className="py-3 px-6">
-              Type
+              <FormattedMessage id="transactions.type" />
             </th>
             <th scope="col" className="py-3 px-6">
-              Date
+              <FormattedMessage id="transactions.date" />
             </th>
             <th scope="col" className="py-3 px-6">
-              Status
+              <FormattedMessage id="transactions.status" />
             </th>
             <th scope="col" className="py-3 px-6">
-              Amount
+              <FormattedMessage id="transactions.amount" />
             </th>
             <th scope="col" className="py-3 px-6">
-              Signature
+              <FormattedMessage id="transactions.signature" />
             </th>
           </tr>
         </thead>
@@ -79,18 +86,23 @@ function Transactions(props) {
                   {displayAddress(publicKey)}
                 </a>
               </td>
-              <td className="py-4 px-6">Claiming</td>
+              <td className="py-4 px-6">
+                <FormattedMessage id="transactions.type.claiming" />
+              </td>
               <td className="py-4 px-6  whitespace-nowrap">
                 {transaction?.blockTime
                   ? formatDistance(transaction.blockTime * 1000, new Date(), {
                       addSuffix: true,
+                      locale: intl.locale === "fr" ? fr : en,
                     })
                   : "/"}
               </td>
               <td className="py-4 px-6">
                 <div className="inline-flex items-center py-1.5 px-3 mr-2 font-medium text-green-300/90 bg-green-700/40 rounded-full text-xs">
                   <CheckIcon className="h-4 w-4 mr-2" />
-                  <span>Success</span>
+                  <span>
+                    <FormattedMessage id="transactions.status.success" />
+                  </span>
                 </div>
               </td>
               <td className="py-4 px-6">
@@ -117,7 +129,9 @@ function Transactions(props) {
                   target="_blank"
                   className="text-pink-500 hover:underline inline-flex items-center"
                 >
-                  <span>View more</span>
+                  <span>
+                    <FormattedMessage id="transactions.view_more" />
+                  </span>
                   <ExternalLinkIcon className="h-4 w-4 ml-1" />
                 </a>
               </td>

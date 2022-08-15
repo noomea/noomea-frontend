@@ -2,41 +2,43 @@ import Image from "next/image";
 import React from "react";
 import { ArrowSmRightIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function Steps(props) {
   const { type = "viewers" } = props;
+  const intl = useIntl();
 
   const steps = {
     viewers: [
       {
         image: "/img/steps/connect-wallet.png",
-        text: "Connect your Phantom wallet",
+        text: intl.formatMessage({ id: "steps.viewer.1" }),
       },
       {
         image: "/img/steps/connect-twitch.png",
-        text: "Link your Twitch account",
+        text: intl.formatMessage({ id: "steps.viewer.2" }),
       },
       {
         image: "/img/steps/watch-streamers.png",
-        text: "Watch partnered creators",
+        text: intl.formatMessage({ id: "steps.viewer.3" }),
       },
       {
         image: "/img/steps/earn-noom.png",
-        text: "Earn NOOM",
+        text: intl.formatMessage({ id: "steps.viewer.4" }),
       },
     ],
     creators: [
       {
         image: "/img/steps/connect-wallet.png",
-        text: "Connect your Phantom wallet",
+        text: intl.formatMessage({ id: "steps.creator.1" }),
       },
       {
         image: "/img/steps/connect-twitch.png",
-        text: "Link your Twitch account",
+        text: intl.formatMessage({ id: "steps.creator.2" }),
       },
       {
         image: "/img/steps/earn-noom.png",
-        text: "Stake NOOM",
+        text: intl.formatMessage({ id: "steps.creator.3" }),
       },
     ],
   };
@@ -47,7 +49,7 @@ function Steps(props) {
         <div className="lg:flex justify-center text-center">
           <div className="block lg:hidden">
             <h2 className="text-4xl font-bold leading-normal text-center mb-12">
-              How to use our platform
+              <FormattedMessage id="steps.title" />
             </h2>
           </div>
           {steps[type]?.map((item, index) => (
