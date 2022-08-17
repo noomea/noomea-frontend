@@ -1,3 +1,5 @@
+import { FormattedMessage } from "react-intl";
+
 export default function Custom404() {
   return (
     <>

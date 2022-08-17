@@ -56,7 +56,7 @@
   "news.dropEvent.description": "Du 12 au 19 août, 2x plus de chances d'obtenir un drop sur nos créateurs partenaires.",
   "earnings.title": "Gains",
   "earnings.today": "Aujourd'hui",
-  "earnings.max_description": "Gains maximum par jour : {limite} NOOM",
+  "earnings.max_description": "Gains maximum par jour : {limit} NOOM",
   "transactions.title": "Transactions",
   "transactions.no_result": "Aucune information",
   "transactions.address": "Adresse",

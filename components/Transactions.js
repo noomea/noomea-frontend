@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CheckIcon, ExternalLinkIcon } from "@heroicons/react/solid";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { formatDistance } from "date-fns";
-import { en, fr } from "date-fns/locale";
+import { enUS, fr } from "date-fns/locale";
 
 import { getAmountFromTransaction, getTransaction } from "../api/solanaRPC";
 import { displayAddress } from "../utils";
@@ -93,7 +93,7 @@ function Transactions(props) {
                 {transaction?.blockTime
                   ? formatDistance(transaction.blockTime * 1000, new Date(), {
                       addSuffix: true,
-                      locale: intl.locale === "fr" ? fr : en,
+                      locale: intl.locale === "fr" ? fr : enUS,
                     })
                   : "/"}
               </td>
